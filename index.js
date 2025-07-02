@@ -83,8 +83,14 @@ app.post('/api/users/:_id/exercises',async(req,res)=>{
   });
   try{
     const exe=await exerciseObj.save();
-    console.log(exe);
-    res.json(exe);
+    // console.log(exe);
+    res.json({
+      username: user.username,
+      description: exe.description,
+      duration: exe.duration,
+      date: exe.date.toDateString(),
+      _id: user._id
+    });
 
   }
   catch(err){
